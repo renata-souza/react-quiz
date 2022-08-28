@@ -1,0 +1,34 @@
+.form {
+  box-sizing: border-box;
+  max-width: 70%;
+  margin: 30px auto;
+}
+
+.form button {
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: lightcoral;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.form button.anterior {
+  color: lightcoral;
+  max-height: 35px;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.form fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form fieldset input[type="radio"] {
+  margin: 15px;
+}
