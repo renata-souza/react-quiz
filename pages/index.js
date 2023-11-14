@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import style from '../styles/Home.module.css'
 import Radio from './Form/Radio';
+import Head from 'next/head';
+import Script from 'next/script';
 
 const perguntas = [
   {
@@ -80,24 +82,31 @@ export default function Home() {
   }
 
   return (
-    <form className={style.form} onSubmit={(event) => event.preventDefault()}>
-      {perguntas.map((pergunta, index) => (
-        <Radio 
-          onChange={handleChange} 
-          value={respostas[pergunta.id]} 
-          active={slide === index}
-          key={pergunta.id}
-          {...pergunta}
-        />
-      ))}
-      {slide < perguntas.length && <button onClick={proxima}>{slide === perguntas.length - 1 ? `Finalizar` : `Proxima`}</button>}
-      {slide > 0 && slide < perguntas.length && <button onClick={anterior} className={style.anterior}>Anterior</button>}
-      {resultado && (
-        <>
-          <p>Resultado: {resultado}</p>
-          <button onClick={() => location.reload()}>Refazer quiz</button>
-        </>
-      )}
-    </form>
+    <>
+      <Head>
+        <title>My page title</title>
+      </Head>
+      <Script Scripttype="text/javascript" src="//cdn.evgnet.com/beacon/partnergentropbr/treinamento_renata/scripts/evergage.min.js" />
+
+      <form className={style.form} onSubmit={(event) => event.preventDefault()}>
+        {perguntas.map((pergunta, index) => (
+          <Radio 
+            onChange={handleChange} 
+            value={respostas[pergunta.id]} 
+            active={slide === index}
+            key={pergunta.id}
+            {...pergunta}
+          />
+        ))}
+        {slide < perguntas.length && <button onClick={proxima}>{slide === perguntas.length - 1 ? `Finalizar` : `Proxima`}</button>}
+        {slide > 0 && slide < perguntas.length && <button onClick={anterior} className={style.anterior}>Anterior</button>}
+        {resultado && (
+          <>
+            <p>Resultado: {resultado}</p>
+            <button onClick={() => location.reload()}>Refazer quiz</button>
+          </>
+        )}
+      </form>
+    </>
   )
 }
